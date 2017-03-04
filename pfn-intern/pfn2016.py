@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Implementation of Auto encoder from scrach.
+"""
+
+
 def matrix_check(l):
     try:
         row = len(l[0])
