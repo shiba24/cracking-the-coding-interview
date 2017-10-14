@@ -74,6 +74,7 @@ public:
         }
         return 1.0 - float(error) / float(labels.size())
     }
+
 };
 
 Perceptron::Perceptron(void) cout << "Create perceptron." << endl;
