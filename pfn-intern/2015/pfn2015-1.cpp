@@ -38,7 +38,7 @@ int main(){
     std::vector<std::vector<float> > data = pfn15::GetInputMat(n, m);
     // data = SubtractMean(data);
     // data = NormalizeVariance(data);
-    data = pfn15::Normalize(data);
+    pfn15::Normalize(data);
     pfn15::PrintVector(data);
     return 0;
 }
