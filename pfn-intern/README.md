@@ -9,6 +9,12 @@ https://research.preferred.jp/2016/07/intern-coding-tasks/
 My solutions includes python and C++. Feel free to add your answers at any language! I know yours are probably more sophisticated ;)
 
 
+# Execution of C++ code
+
+```
+c++ -std=c++11 -stdlib=libc++ pfn2015-1.cpp -o 1.out
+```
+
 # TODO
 
 Translate and push the questions in this repository.

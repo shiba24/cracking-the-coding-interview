@@ -1,40 +1,29 @@
+#include "pfn2015-1.h"
+
 #include <iostream>
-#include <iomanip>
+#include <fstream>
+#include <sstream>
+
+#include <tuple>
+#include <string>
+
 #include <vector>
 #include <numeric>
 #include <cmath>
 #include <stdexcept>
 
-using namespace std;
 
 
-vector<float> GetInputVec(int n){
-    vector<float> data;
-    int k;
-    cin >> k;
-    for (int j = 0; j < n; j++){
-        float input;
-        cin >> input;
-        data.push_back(input);
-    }
-    return data;
+    int& i = std::get<0>(t);
+    std::string& s = std::get<2>(t);
+
+
+
+void CheckDim(const std::vector<std::vector<float> >& data, cosnt std::vector<int>& labels){
+    if (data.size() != labels.size()) throw std::invalid_argument("Missmatch dataset size");
 }
 
-
-vector<vector<float> > GetInputMat(int n, int m){
-    vector<vector<float> > data;
-    for (int i = 0; i < n; i++){
-        vector<float> temp = GetInputVec(m);
-        data.push_back(temp);
-    }
-    return data;
-}
-
-void CheckDim(const vector<vector<float> >& data, cosnt vector<int>& labels){
-    if (data.size() != labels.size()) throw invalid_argument("Missmatch dataset size");
-}
-
-float DotProduct(vector<float> arr1, vector<float> arr2){
+float DotProduct(std::vector<float> arr1, std::vector<float> arr2){
     CheckDim(arr1, arr2);
     float dot = 0.0
     for (int i = 0; i < arr1.size(); i++) float += arr1[i] * arr2[i];
@@ -46,8 +35,8 @@ float I(float d){
 }
 
 
-vector<float> Mul(float factor, vector<float> array){
-    vector<float> mul;
+std::vector<float> Mul(float factor, std::vector<float> array){
+    std::vector<float> mul;
     for (int i = 0; i < array.size(); i++) mul.push_back(factor * array[i]);
     return mul;
 }
