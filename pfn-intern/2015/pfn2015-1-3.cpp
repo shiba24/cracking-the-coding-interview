@@ -79,37 +79,34 @@ public:
 // }
 
 
-
-
 int main(){
-    std::string fname = "./data/train.txt";
-    std::tuple<std::vector<std::vector<float> >, std::vector<int> > t;
-    t = pfn15::InputFileLine(fname);
+    try  
+    {  
+        std::string fname = "./data/train.txt";
+        std::tuple<std::vector<std::vector<float> >, std::vector<int> > t;
+        t = pfn15::InputFileLine(fname);
 
-    std::vector<std::vector<float> >& data = std::get<0>(t);
-    std::vector<int>& labels = std::get<1>(t);
+        std::vector<std::vector<float> >& data = std::get<0>(t);
+        std::vector<int>& labels = std::get<1>(t);
 
-    Perceptron p;
-    p.Initialize(data[0].size());
+        Perceptron p;
+        p.Initialize(data[0].size());
 
-    data = pfn15::NormalizeMat(data);
+        data = pfn15::NormalizeMat(data);
 
-    // std::vector<float> y;
-    labels = pfn15::NormalizeVec(labels);
-    // std::cout << labels[0] << std::endl;
+        // std::vector<float> y;
+        labels = pfn15::NormalizeVec(labels);
+        // std::cout << labels[0] << std::endl;
 
-    int num_iter = 5;
-    p.Iterate(num_iter, data, labels);
-    // float acc = p.Learn(data, labels);
-    // std::cout << acc << std::endl;
-
-   // try  
-   // {  
-   // }  
-   // catch(invalid_argument& e)  
-   // {  
-   //    return -1;  
-   // }  
+        int num_iter = 5;
+        p.Iterate(num_iter, data, labels);
+        // float acc = p.Learn(data, labels);
+        // std::cout << acc << std::endl;
+    }  
+    catch(invalid_argument& e)  
+    {  
+      return -1;  
+    }  
     return 0;
 }
 
