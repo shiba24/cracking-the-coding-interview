@@ -13,6 +13,11 @@
 #include <stdexcept>
 
 
+// void CheckDim(std::vector<std::vector<float> >& data, std::vector<float>& labels){
+//     if (data.size() != labels.size()) throw std::invalid_argument("Missmatch dataset size");
+// }
+
+
 float DotProduct(std::vector<float> arr1, std::vector<float> arr2){
     if (arr1.size() != arr2.size()) throw std::invalid_argument("Missmatch dataset size");
     float dot = 0.0;
@@ -69,14 +74,15 @@ public:
             std::cout << "Iteration " << i << ", accuracy = " << std::fixed << std::setprecision(2) << acc << std::endl;
         }
     }
-};
 
-// Perceptron::Perceptron(void) std::cout << "Create perceptron." << std::endl;
-
-// Perceptron::~Perceptron(void) {};
 // float CrossValidate(int num_iterations, const vector<vector<float> >& data, 
 //     cosnt vector<int>& labels){
 // }
+
+};
+
+// Perceptron::Perceptron(void) std::cout << "Create perceptron." << std::endl;
+// Perceptron::~Perceptron(void) {};
 
 
 int main(){
@@ -94,9 +100,7 @@ int main(){
 
         data = pfn15::NormalizeMat(data);
 
-        // std::vector<float> y;
         labels = pfn15::NormalizeVec(labels);
-        // std::cout << labels[0] << std::endl;
 
         int num_iter = 5;
         p.Iterate(num_iter, data, labels);
@@ -109,12 +113,5 @@ int main(){
     }  
     return 0;
 }
-
-
-// void CheckDim(std::vector<std::vector<float> >& data, std::vector<float>& labels){
-//     if (data.size() != labels.size()) throw std::invalid_argument("Missmatch dataset size");
-// }
-
-
 
 

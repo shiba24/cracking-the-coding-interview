@@ -1,4 +1,4 @@
-The coding tests of internship at Preffered Networks:
+The solutions of coding tests of internship at Preffered Networks:
 ===
 
 This repository provides *unofficial* solutions for the coding interview tests of P[referred Networks Inc.](https://www.preferred-networks.jp/).
