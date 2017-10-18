@@ -1,7 +1,7 @@
 Cracking the PFN coding interview
 ===
 
-This repository provides *unofficial* solutions for the coding interview tests of P[referred Networks Inc.](https://www.preferred-networks.jp/).
+This repository offers *unofficial* solutions for the coding interview tests of P[referred Networks Inc.](https://www.preferred-networks.jp/).
 
 The past questions are available online, although in Japanese only now.
 https://research.preferred.jp/2016/07/intern-coding-tasks/
