@@ -56,7 +56,7 @@ public:
             }
         }
         return 1.0 - float(error) / float(labels.size());
-    };
+    }
 
     float Test(std::vector<std::vector<float> > data, std::vector<int> labels){
         if (data.size() != labels.size()) throw std::invalid_argument("Missmatch dataset size");
@@ -67,7 +67,7 @@ public:
             }
         }
         return 1.0 - float(error) / float(labels.size());
-    };
+    }
 
     float CrossValidate(int num_iterations, const std::vector<std::vector<float> >& data, const std::vector<int>& labels){
         float n_fold = 5.0;
@@ -90,25 +90,28 @@ public:
             ", Test accuracy: " << std::fixed << std::setprecision(2) << test_acc << std::endl;
         }
         return 0.0;
-    };
+    }
 
 
     std::tuple<std::vector<std::vector<float> >, std::vector<int>, 
     std::vector<std::vector<float> >, std::vector<int> > SplitData(float test_ratio,
         const std::vector<std::vector<float> >& data, const std::vector<int>& labels){
 
+        // randomize index
         std::vector<int> indexes;
         indexes.reserve(data.size());
         for (int i = 0; i < data.size(); ++i) indexes.push_back(i);
         std::random_shuffle(indexes.begin(), indexes.end());
 
+        // Create all shuffled arrays
         std::vector<std::vector<float> > X_train;
         std::vector<int> y_train;
         for (std::vector<int>::iterator it1 = indexes.begin(); it1 != indexes.end(); ++it1 ){
             X_train.push_back(data[*it1]);
             y_train.push_back(labels[*it1]);
-        };
+        }
 
+        // Pick up test, and create train and test arrays
         std::vector<std::vector<float> > X_test;
         std::vector<int> y_test;
         for (int i = 0; i < data.size() * test_ratio; i++){
@@ -120,11 +123,12 @@ public:
             y_train.pop_back();            
             y_test.push_back(_y);
 
-        };
+        }
+        // Return tuple
         std::tuple<std::vector<std::vector<float> >, std::vector<int>, 
         std::vector<std::vector<float> >, std::vector<int> > t = std::make_tuple(X_train, y_train, X_test, y_test);
         return t;
-    };
+    }
 
 
     void Iterate(int num_iter, std::vector<std::vector<float> > data, std::vector<int> labels){
@@ -133,16 +137,10 @@ public:
             std::cout << "Iteration " << i << ", accuracy = " << std::fixed << std::setprecision(2) << acc << std::endl;
         }
     }
-
-
 };
 
-Perceptron::Perceptron(void){
-    std::cout << "Create perceptron." << std::endl;
-};
-Perceptron::~Perceptron(void) {
-    std::cout << "Complete." << std::endl;
-};
+Perceptron::Perceptron(void){std::cout << "Create perceptron." << std::endl;}
+Perceptron::~Perceptron(void) {std::cout << "Complete." << std::endl;}
 
 
 int main(){
@@ -157,9 +155,7 @@ int main(){
 
         Perceptron p;
         p.Initialize(data[0].size());
-
         data = pfn15::NormalizeMat(data);
-
         labels = pfn15::NormalizeVec(labels);
 
         int num_iter = 10;
@@ -172,5 +168,3 @@ int main(){
     }  
     return 0;
 }
-
-
