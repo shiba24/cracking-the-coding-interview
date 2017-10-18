@@ -11,6 +11,8 @@ My solutions includes python and C++. Feel free to add your answers at any langu
 
 # Execution of C++ code
 
+Example:
+
 ```
 c++ -std=c++11 -stdlib=libc++ pfn2015-1.cpp -o 1.out
 ```
