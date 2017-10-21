@@ -14,7 +14,7 @@ My solutions includes python and C++. Feel free to add your answers at any langu
 Example:
 
 ```
-c++ -std=c++11 -stdlib=libc++ pfn2015-1.cpp -o 1.out
+c++ -std=c++11 -stdlib=libc ++ pfn2015-1.cpp -o 1.out
 ```
 
 # TODO
