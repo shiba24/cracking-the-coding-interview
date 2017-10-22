@@ -14,7 +14,7 @@ Example:
 
 ```
 c++ -std=c++11 -stdlib=libc ++ pfn2015-1.cpp -o 1.out
-
+```
 
 In case of usage of eigen library:
 
@@ -24,4 +24,4 @@ c++ -std=c++11 -stdlib=libc++ -I /usr/local/include/eigen3 pfn2015-2.cpp -o 4.ou
 
 # TODO
 
-Translate and push the questions in this repository.
+Translate and push the rest of questions in this repository.
