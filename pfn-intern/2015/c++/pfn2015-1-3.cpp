@@ -146,7 +146,7 @@ Perceptron::~Perceptron(void) {std::cout << "Complete." << std::endl;}
 int main(){
     try  
     {  
-        std::string fname = "./data/train.txt";
+        std::string fname = "../data/train.txt";
         std::tuple<std::vector<std::vector<float> >, std::vector<int> > t;
         t = pfn15::InputFileLine(fname);
 
