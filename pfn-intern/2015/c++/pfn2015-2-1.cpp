@@ -26,7 +26,7 @@ void ZCAWhitening(Eigen::Matrix2d & data){
 // MatrixXd mat(10, 4);
 // for (int i = 0; i < 10; i++)
 //   mat.row(i) = Eigen::VectorXd::Map(&data[i][0],data[i].size());
-
+    
 int main(){
     Eigen::MatrixXd mat(2, 3);
     mat << 1, 2, 3, 7, 8, 9;
