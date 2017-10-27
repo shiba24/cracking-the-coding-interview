@@ -20,6 +20,7 @@ void ZCAWhitening(Eigen::Matrix2d & data){
     // std::cout << "matrix V" << std::endl << svd.matrixV() << std::endl;
 }
 
+
 // [U,S,V] = svd(sigma);
 
 // MatrixXd mat(10, 4);
