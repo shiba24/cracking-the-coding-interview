@@ -10,33 +10,34 @@ Eigen::MatrixXd SubtractMean(Eigen::MatrixXd mat){
     return mat;
 }
 
-void ZCAWhitening(Eigen::Matrix2d & data){
-    data = SubtractMean(data);
+void ZCAWhitening(Eigen::MatrixXd &data){
+    // data = SubtractMean(data);
     Eigen::Matrix2d sigma = data * data.transpose() / data.rows();
+    Eigen::JacobiSVD< Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> > svd(sigma, Eigen::ComputeFullU | Eigen::ComputeFullV);
 
-    Eigen::JacobiSVD< Eigen::Matrix<float, 2, 3> > svd(data, Eigen::ComputeFullU | Eigen::ComputeFullV);
-    // std::cout << "singular values" << std::endl << svd.singularValues() << std::endl;
+    Eigen::VectorXd s = svd.singularValues();
+    // U: [M x M] eigenvectors of sigma, S: [M x 1] eigenvalues of sigma, V: [M x M] transpose of U
+
+    double epsilon = 0.00001;
+    int n = s.size();
+    Eigen::VectorXd tmp = 1.0 / (s + epsilon * Eigen::VectorXd::Ones(n)).array().sqrt();
+    Eigen::MatrixXd zca = svd.matrixU() * (tmp.asDiagonal() * svd.matrixU().transpose());
+
+    data = zca * data;
+    // std::cout << "singular values" << std::endl << s << std::endl;
     // std::cout << "matrix U" << std::endl << svd.matrixU() << std::endl;
     // std::cout << "matrix V" << std::endl << svd.matrixV() << std::endl;
+    // std::cout << zca << std::endl;
 }
 
 
-// [U,S,V] = svd(sigma);
-
-// MatrixXd mat(10, 4);
-// for (int i = 0; i < 10; i++)
-//   mat.row(i) = Eigen::VectorXd::Map(&data[i][0],data[i].size());
-    
 int main(){
     Eigen::MatrixXd mat(2, 3);
     mat << 1, 2, 3, 7, 8, 9;
 
     std::cout << mat << std::endl;
-    mat = SubtractMean(mat);
+    ZCAWhitening(mat);
     std::cout << mat << std::endl;
-    // std::cout << mean << std::endl;
     return 0;
 }
-
-
 
