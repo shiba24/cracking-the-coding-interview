@@ -46,12 +46,16 @@ public:
 
     void Initialize(int ndim){for (int i = 0; i < ndim; i++) W.push_back(0.0);}
 
+    void Update(int label, std::vector<float> data){
+        W = Add(W,  Mul(label, data));
+    }
+
     float Train(std::vector<std::vector<float> > data, std::vector<int> labels){
         if (data.size() != labels.size()) throw std::invalid_argument("Missmatch dataset size");
         int error = 0;
         for (int i = 0; i < labels.size(); i++){
             if (labels[i] * I(DotProduct(W, data[i])) < 0){
-                W = Add(W,  Mul(labels[i], data[i]));
+                Update(labels[i], data[i]);
                 error += 1;
             }
         }
