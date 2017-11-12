@@ -1,3 +1,5 @@
+#include "pfn2015-1.h"
+
 #include <iostream>
 #include <Eigen/Dense>
 #include <Eigen/SVD>
@@ -10,11 +12,15 @@ public:
     ~MLP();
 
     void Initialize(int n_input, int n_nodes, float eta=0.1){
+        int input = n_input;
+        int nodes = n_nodes;
+        float eta = eta;
         for (int i = 0; i < ndim; i++) W.push_back(0.0);
     }
 
     std::vector<std::vector<float> > InitializeW(float initial_W=0.0){
-        std::vector<std::vector<float> >  W;
+        std::vector<std::vector<float> >  W ;
+
         W1 = [[initial_W for i in range(self.n_input)] for i in range(self.n_nodes)]
         b1 = [initial_b for i in range(self.n_nodes)]
         W2 = [[initial_W for i in range(self.n_nodes)] for i in range(self.n_input)]
@@ -26,9 +32,6 @@ public:
         for (int i = 0; i < n_nodes; i++) b.push_back(initial_b);
         return b;
     }
-
-
-
 
 
     float Train(std::vector<std::vector<float> > data, std::vector<int> labels){
@@ -124,8 +127,9 @@ public:
     }
 };
 
-Perceptron::Perceptron(void){std::cout << "Create perceptron." << std::endl;}
-Perceptron::~Perceptron(void) {std::cout << "Complete." << std::endl;}
+
+MLP::MLP(void){std::cout << "Create perceptron." << std::endl;}
+MLP::~MLP(void) {std::cout << "Complete." << std::endl;}
 
 
 int main(){
@@ -156,37 +160,37 @@ int main(){
 
 
 
-    def __init__(self, n_input, n_nodes=5, eta=0.1):
-        self.n_input = n_input
-        self.n_nodes = n_nodes
-        self.eta = eta
+    // def __init__(self, n_input, n_nodes=5, eta=0.1):
+    //     self.n_input = n_input
+    //     self.n_nodes = n_nodes
+    //     self.eta = eta
 
-    def __call__(self, x):
-        self.x = x
-        self.h = affine(self.x, self.W1, self.b1)
-        self.y = affine(self.h, self.W2, self.b2)
-        return self.y
+    // def __call__(self, x):
+    //     self.x = x
+    //     self.h = affine(self.x, self.W1, self.b1)
+    //     self.y = affine(self.h, self.W2, self.b2)
+    //     return self.y
 
-    def initialize_Wb(self, initial_W=0., initial_b=0.1):
-        self.W1 = [[initial_W for i in range(self.n_input)] for i in range(self.n_nodes)]
-        self.b1 = [initial_b for i in range(self.n_nodes)]
-        self.W2 = [[initial_W for i in range(self.n_nodes)] for i in range(self.n_input)]
-        self.b2 = [initial_b for i in range(self.n_input)]
+    // def initialize_Wb(self, initial_W=0., initial_b=0.1):
+    //     self.W1 = [[initial_W for i in range(self.n_input)] for i in range(self.n_nodes)]
+    //     self.b1 = [initial_b for i in range(self.n_nodes)]
+    //     self.W2 = [[initial_W for i in range(self.n_nodes)] for i in range(self.n_input)]
+    //     self.b2 = [initial_b for i in range(self.n_input)]
 
-    def forward(self, x):
-        self.loss = rms(x, self(x)) / 2.        
+    // def forward(self, x):
+    //     self.loss = rms(x, self(x)) / 2.        
 
-    def backward(self):
-        gy = subtract_vector(self.y, self.x)
-        gW2 = outer(gy, self.h)
-        gb2 = gy
-        gh = affine(gy, transpose(self.W2), [0] * len(self.W2[0]))
-        gW1 = outer(gh, self.x)
-        gb1 = gh
-        self.W2 = subtract_vector(self.W2, multiple_scalar(gW2, self.eta))
-        self.b2 = subtract_vector(self.b2, multiple_scalar(gb2, self.eta))
-        self.W1 = subtract_vector(self.W1, multiple_scalar(gW1, self.eta))
-        self.b1 = subtract_vector(self.b1, multiple_scalar(gb1, self.eta))
+    // def backward(self):
+    //     gy = subtract_vector(self.y, self.x)
+    //     gW2 = outer(gy, self.h)
+    //     gb2 = gy
+    //     gh = affine(gy, transpose(self.W2), [0] * len(self.W2[0]))
+    //     gW1 = outer(gh, self.x)
+    //     gb1 = gh
+    //     self.W2 = subtract_vector(self.W2, multiple_scalar(gW2, self.eta))
+    //     self.b2 = subtract_vector(self.b2, multiple_scalar(gb2, self.eta))
+    //     self.W1 = subtract_vector(self.W1, multiple_scalar(gW1, self.eta))
+    //     self.b1 = subtract_vector(self.b1, multiple_scalar(gb1, self.eta))
 
 
 
